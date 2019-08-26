@@ -14,11 +14,10 @@ class MoviesPage extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <h2>Movies Page</h2>
-                <MoviesList movies = {this.props.movies.movies}></MoviesList>
+                <MoviesList movies = {this.props.movies}></MoviesList>
             </div>
         )
     }

@@ -35,7 +35,9 @@ class Header extends Component {
 							<Menu.Item as={Link} to="/movies">
 								Movies
 							</Menu.Item>
-							<Menu.Item as='a'>Add New</Menu.Item>
+							<Menu.Item as={Link} to="/AddMoviesPage">
+								Add Movies
+							</Menu.Item>
 						</Container>
 					</Menu>
 				</Visibility>

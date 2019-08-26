@@ -1,19 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import '../App.css';
+
 
 const  MoviesList = ({movies}) => {
     const emptyMessage= (
-        <p>There are no movies yet.</p>
+        <h3>There are no movies yet.</h3>
     );
     const moviesList = (
-        <div>
-           {movies.map( movie => 
-            <li key={movie._id}> 
-            {movie.title}
-            <img src={movie.cover}></img>
-
-            </li>)}
-        </div>
+    //    {
+        //    movies.error.response ? <h3>Error retrieving data.</h3> : 
+           <div className="ui three column grid">
+            {movies.movies.map( movie => 
+                <div className="column" key={movie._id}>
+                    <div className="ui fluid card" >  
+                        <div className="image">
+                            <img src={movie.cover} alt={movie.cover} className="ui fluid image"></img>
+                        </div>
+                        <div className="content">
+                            <p className="header">{movie.title}</p>
+                        </div>
+                    </div>
+               </div>
+               )}
+            </div>
+    //    }
     );
 
     return (
