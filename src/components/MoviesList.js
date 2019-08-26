@@ -7,7 +7,12 @@ const  MoviesList = ({movies}) => {
     );
     const moviesList = (
         <div>
-            Movies List 
+           {movies.map( movie => 
+            <li key={movie._id}> 
+            {movie.title}
+            <img src={movie.cover}></img>
+
+            </li>)}
         </div>
     );
 
