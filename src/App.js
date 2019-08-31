@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
 import MoviesPage from './components/pages/MoviesPage';
-import AddMoviesPage from './components/pages/NewMoviePage';
+import NewMoviePage from './components/pages/NewMoviePage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
@@ -18,8 +18,8 @@ class App extends Component {
         <div className="minH">
             <Container text>
               <Route exact path='/movies' component={MoviesPage}></Route>
-              <Route exact path='/movies/new' component={AddMoviesPage}></Route>
-
+              <Route exact path='/movies/new' component={NewMoviePage}></Route>
+              <Route exact path='/movie/:_id' component={NewMoviePage}></Route>
             </Container>
 
         </div>

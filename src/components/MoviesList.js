@@ -7,7 +7,7 @@ import {loaderStyle} from "../helpers/styleHelper";
 
 
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies,deleteMovie }) => {
 	const emptyMessage = (
 		<p>There are no movies yet.</p>
 	);
@@ -22,7 +22,11 @@ const MoviesList = ({ movies }) => {
 					:
 					<Grid stackable columns={3}>
 						{
-							movies.movies.map(movie => <MovieCard key={movie._id} movie={movie} />)
+							movies.movieList.map(movie => <MovieCard
+								 key={movie._id}
+								 movie={movie}
+								 deleteMovie={deleteMovie}
+								   />)
 						}
 					</Grid>
 			}
@@ -38,7 +42,7 @@ const MoviesList = ({ movies }) => {
 
 MoviesList.propTypes = {
 	movies: PropTypes.shape({
-		movies: PropTypes.array.isRequired
+		movieList: PropTypes.array.isRequired
 	}).isRequired
 };
 

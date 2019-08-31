@@ -8,7 +8,18 @@
 .minH{
   min-height: 70vh;
 }
+.ui.card > img{
+  max-height: 290px !important;
+}
 
+.ui.card > .content > .header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-size: 1.1em !important;
+
+}
 .App-header {
   background-color: #282c34;
   min-height: 10vh;

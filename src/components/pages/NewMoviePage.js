@@ -1,27 +1,45 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import NewMovieForm from '../NewMovieForm';
-import { onNewMovieSubmit } from '../../actions/newMovie';
+import {
+	onNewMovieSubmit,
+	onUpdateMovieSubmit,
+	fetchMovie
+} from '../../actions/newMovie';
 
+class NewMoviePage extends Component {
+	componentDidMount() {
+		const { match } = this.props;
+		if (!this.props.movie && match.params._id) {
+		  this.props.fetchMovie(match.params._id);
+		}
+	}
 
-export class NewMoviePage extends Component {
-
-    render() {
-        return (
-                <NewMovieForm onNewMovieSubmit={this.props.onNewMovieSubmit}/>
-        )
-    }
+	render() {
+		return (
+			<div>
+				<h2>New Movie</h2>
+				<NewMovieForm
+					movie={this.props.movie}
+					newMovie={this.props.newMovie}
+					onUpdateMovieSubmit={this.props.onUpdateMovieSubmit}
+					onNewMovieSubmit={this.props.onNewMovieSubmit}/>
+			</div>
+		);
+	}
 }
 
-const mapStateToProps = ({newMovie}) => {
-    return {
-        newMovie
-    }
+const mapStateToProps = ({ newMovie, movies }, props) => {
+	return {
+		newMovie,
+		movie: movies.movieList.find(item => item._id === props.match.params._id)
+	}
 };
 
 const mapDispatchToProps = {
-    onNewMovieSubmit
+	onNewMovieSubmit,
+	onUpdateMovieSubmit,
+	fetchMovie
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewMoviePage);
