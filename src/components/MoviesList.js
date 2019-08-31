@@ -1,41 +1,45 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import '../App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import MovieCard from './MovieCard';
+import { Grid } from 'semantic-ui-react';
+import { HashLoader } from 'react-spinners';
+import {loaderStyle} from "../helpers/styleHelper";
 
 
-const  MoviesList = ({movies}) => {
-    const emptyMessage= (
-        <h3>There are no movies yet.</h3>
-    );
-    const moviesList = (
-    //    {
-        //    movies.error.response ? <h3>Error retrieving data.</h3> : 
-           <div className="ui three column grid">
-            {movies.movies.map( movie => 
-                <div className="column" key={movie._id}>
-                    <div className="ui fluid card" >  
-                        <div className="image">
-                            <img src={movie.cover} alt={movie.cover} className="ui fluid image"></img>
-                        </div>
-                        <div className="content">
-                            <p className="header">{movie.title}</p>
-                        </div>
-                    </div>
-               </div>
-               )}
-            </div>
-    //    }
-    );
 
-    return (
-        <div>
-           { movies.length === 0 ? emptyMessage : moviesList }
-        </div>
-    );
-}
+const MoviesList = ({ movies }) => {
+	const emptyMessage = (
+		<p>There are no movies yet.</p>
+	);
+
+	
+	const moviesList = (
+		<div>
+			<HashLoader size={150} color={"#4BBFAD"} loading={movies.fetching} css={loaderStyle}/>
+			{
+				movies.error.response
+					? <h3>Upss, something went wrong ! Error retrieving data!</h3>
+					:
+					<Grid stackable columns={3}>
+						{
+							movies.movies.map(movie => <MovieCard key={movie._id} movie={movie} />)
+						}
+					</Grid>
+			}
+		</div>
+	);
+
+	return (
+		<div>
+			{ movies.length === 0 ? emptyMessage : moviesList }
+		</div>
+	);
+};
 
 MoviesList.propTypes = {
-    movies: PropTypes.array.isRequired
+	movies: PropTypes.shape({
+		movies: PropTypes.array.isRequired
+	}).isRequired
 };
 
 export default MoviesList;

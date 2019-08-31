@@ -5,8 +5,8 @@
   pointer-events: none;
 }
 
-.hoppala{
-  min-height: 50vh;
+.minH{
+  min-height: 70vh;
 }
 
 .App-header {
@@ -18,6 +18,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+
+
+.clearfix{
+  clear: both;
+  display: block;
+  margin-bottom: 10px;
+
+}
+
+.inlineError{
+  color: #f44336;
+  font-weight: bold;
 }
 
 .App-link {

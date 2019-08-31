@@ -30,6 +30,12 @@ mongodb.MongoClient.connect(dbUrl, (err, db) =>  {
     db.collection('movies').find({}).toArray((err, movies) => {
       res.json({ movies });
     });
+  // Loader Test 
+  //  setTimeout(()=>{
+  //   db.collection('movies').find({}).toArray((err, movies) => {
+  //     res.json({ movies });
+  //   });
+  //  },2500)
   });
 
   app.post('/api/movies', (req, res) => {

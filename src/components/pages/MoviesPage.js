@@ -8,16 +8,16 @@ class MoviesPage extends Component {
     static propTypes = {
         movies: PropTypes.object.isRequired
     };
-
     componentDidMount(){
         this.props.fetchMovies();
+        console.log(this.props.movies)
     }
 
     render() {
         return (
             <div>
-                <h2>Movies Page</h2>
-                <MoviesList movies = {this.props.movies}></MoviesList>
+                <h2>Movies</h2>
+                <MoviesList movies = {this.props.movies} />
             </div>
         )
     }
