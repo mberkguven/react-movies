@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image, Grid, Button, Icon, Modal, Header } from 'semantic-ui-react'
+import { Card, Image, Grid, Button, Icon} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const extra = (movie,deleteMovie) => {
